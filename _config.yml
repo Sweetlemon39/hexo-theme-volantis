@@ -204,7 +204,7 @@ layout:
     # 文章页脚，自动在每一篇文章末尾添加
     footer: #[copyright]
     # 文章页面的侧边栏
-    sidebar: [blogger, guide, repos, catelogy, tagcloud, toc]
+    sidebar: [blogger, guide, repos, category, tagcloud, toc]
   # 其他的页面布局暂时等于文章列表
 
 
