@@ -7,9 +7,9 @@
     <div class='nav-sub container--flex'>
       <a class="logo flat-box"></a>
       <ul class='switcher h-list'>
-        <li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
         <% if (page.sidebar == undefined || page.sidebar != false) { %>
-          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
         <% } %>
       </ul>
     </div>
@@ -97,47 +97,41 @@
 
 			<ul class='switcher h-list'>
 				<% if (theme.search.enable === true) { %>
-					<li class='s-search'><a class="fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
 				<% } %>
-				<li class='s-menu'><a class="fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
 			</ul>
 		</div>
 	</div>
 </header>
-<aside class="menu-phone white-box">
-  <header>
-  	<nav class="menu navigation">
-      <ul>
-        <%
-        let menu_mobile;
-        if (site.data && site.data.menu && site.data.menu.on_mobile) {
-          menu_mobile = site.data.menu.on_mobile;
-        } else {
-          menu_mobile = theme.navbar.menu.on_mobile;
-        }
-        menu_mobile = menu_mobile || [];
-        %>
-        <% menu_mobile.forEach(function(value){ %>
-          <li>
-            <a class="nav flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
-              <% if (value.rel) { %>
-                rel="<%- value.rel %>"
-              <% } %>
-              <% if (value.target) { %>
-                target="<%- value.target %>"
-              <% } %>
-              <% if (value.url) { %>
-                id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
-              <% } %>>
-              <% if (value.icon) { %>
-                <i class='<%= value.icon %> fa-fw'></i>
-              <% } %>
-              <%- value.name %>
-            </a>
-          </li>
-        <%})%>
-      </ul>
-  	</nav>
-  </header>
-</aside>
+<ul class="menu-phone navigation white-box">
+  <%
+  let menu_mobile;
+  if (site.data && site.data.menu && site.data.menu.on_mobile) {
+    menu_mobile = site.data.menu.on_mobile;
+  } else {
+    menu_mobile = theme.navbar.menu.on_mobile;
+  }
+  menu_mobile = menu_mobile || [];
+  %>
+  <% menu_mobile.forEach(function(value){ %>
+    <li>
+      <a class="nav flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
+        <% if (value.rel) { %>
+          rel="<%- value.rel %>"
+        <% } %>
+        <% if (value.target) { %>
+          target="<%- value.target %>"
+        <% } %>
+        <% if (value.url) { %>
+          id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
+        <% } %>>
+        <% if (value.icon) { %>
+          <i class='<%= value.icon %> fa-fw'></i>
+        <% } %>
+        <%- value.name %>
+      </a>
+    </li>
+  <%})%>
+</ul>
 <script>setLoadingBarProgress(40);</script>
