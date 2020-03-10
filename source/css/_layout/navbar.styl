@@ -47,12 +47,9 @@
         cursor: default
     a.logo
       color: $color-text
-
-
   &.no_sidebar
     .wrapper
-      max-width: $device-tablet
-      margin: auto
+      max-width: $layout-width - $sidebar
 
   .wrapper.sub
     .logo
@@ -195,14 +192,14 @@
 
     @media screen and (max-width: $device-tablet)
       .s-toc
-        display: block
+        display: flex
     &>li
       height: $navbar-height - $gap
       trans()
       margin: 2px
       $height = $navbar-height - $gap
       @media screen and (max-width: $device-mobile)
-        margin: 0
+        margin: 0 1px
         height: $height
 
       a
@@ -211,10 +208,11 @@
         align-items: center
         width: $height
         height: $height
+        padding: .85em 1.1em
         border-radius: 100px
         trans()
         color: $color-theme
-        &:hover
+        &.active,&:active
           background: bgcolor($color-theme)
         @media screen and (max-width: $device-mobile)
           width: $iconW
@@ -291,57 +289,42 @@
       .logo
         opacity:0
       .m_search
-        $offset = 2 * ($gap + $iconW)
-        width: "calc(100vw - %s)" % $offset
+        $offset = 2.5 * $gap + 2 * $iconW
+        width: "calc(100% - %s)" % $offset
 
 
-.menu-phone
-  .header
-    border-top-left-radius: $borderradius
-    border-top-right-radius: $borderradius
-    background-color: alpha($color-card,90%)
-    color: $color-inner
-    padding: 8px $gap + 6px
+ul.menu-phone
+  display: none
+  @media screen and (max-width: $device-mobile)
+    display: block
   position: fixed
+  padding: $gap * 0.5 0
   top: $navbar-height + $gap
-  right: 0
-  z-index:9999 + 1
-  line-height: 2 * $gap
-  border-right: 0
+  right: $gap
+  z-index: 9999 + 1
   box-shadow: $boxshadow-card-float
   border-radius: $borderradius
-  transform: translate3d(-40px, -40px, 0) scale(0,0)
-  transform-origin: right top
   trans()
-  a
+  transform: scale(0,0)
+  transform-origin: right top
+  &.show
+    transform: scale(1,1)
+
+  >li>a
+    font-size: $fontsize-body
+    line-height: 2.2
+    color: $color-text
+    padding: 0 $gap
     i
       margin-right: 4px
-  &:hover
-    box-shadow: $boxshadow-card-float
-
-  &:active
-    box-shadow: $boxshadow-card
-
-  nav
-    padding: $gap * 0.5 0px
-    .nav
-      height: 40px
-      line-height: 40px
-      position: relative
-      display: block
-      color: $color-text
-      padding: 2px 20px
-      border-left: 4px solid transparent
-      border-right: 4px solid transparent
-      &:hover,&.active
-        border-left: 4px solid $color-theme
-        background: bgcolor($color-theme)
-
+    &.active
+      border-left: $borderradius-line solid $color-theme
+      background: bgcolor($color-theme)
 
 
 .cover-wrapper
   .l_header
     trans(0.5s)
-    transform: translateY(-1.5 * $navbar-height)
+    transform: translateY(-2 * $navbar-height)
     &.show
       transform: translateY(0)
