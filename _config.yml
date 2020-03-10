@@ -307,7 +307,74 @@ widget:
       - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
   # You can add your own widget here or 'blog/source/_data/widget.yml'
   # class: text, list, grid, qrcode, page, ... see more at https://volantis.js.org/
-
+  guide:
+    class: grid
+    display: [desktop, mobile] # [desktop, mobile]
+    header:
+      icon: fas fa-map-signs
+      title: 博客导航
+    rows:
+      - name: 博客主页
+        icon: fas fa-home
+        url: /
+      - name: 文章分类
+        icon: fas fa-folder-open
+        url: /categories/
+      - name: 文章归档
+        icon: fas fa-archive
+        url: /archives/
+      - name: 博客友链
+        icon: fas fa-users
+        url: /friends/
+      - name: 留言评论
+        icon: fas fa-comments
+        url: /comments/
+      - name: 关于博主
+        icon: fas fa-info-circle
+        url: /about/
+      # - name: 主题源码
+      #   icon: fas fa-file-code
+      #   url: https://github.com/xaoxuu/hexo-theme-volantis/
+      #   rel: external nofollow noopener noreferrer
+      #   target: _blank
+  repos:
+    class: grid
+    display: [desktop, mobile] # [desktop, mobile]
+    header:
+      icon: fas fa-link
+      title: 常用站导航
+      url: /useful-links/
+    rows:
+      - name: OI Wiki
+        icon: fab fa-wikipedia-w
+        url: https://oi-wiki.org/
+        rel: external nofollow noopener noreferrer
+        target: _blank
+      - name: 洛谷
+        icon: fas fa-code
+        url: https://www.luogu.com.cn/
+        rel: external nofollow noopener noreferrer
+        target: _blank
+      - name: Codeforces
+        icon: fas fa-code
+        url: https://www.codeforces.com/
+        rel: external nofollow noopener noreferrer
+        target: _blank
+      - name: UOJ
+        icon: fas fa-code
+        url: http://uoj.ac/
+        rel: external nofollow noopener noreferrer
+        target: _blank
+      - name: LOJ
+        icon: fas fa-code
+        url: https://loj.ac/
+        rel: external nofollow noopener noreferrer
+        target: _blank
+      - name: CCF NOI
+        icon: fa fa-code
+        url: http://www.noi.cn/
+        rel: external nofollow noopener noreferrer
+        target: _blank
 
 
 footer:
